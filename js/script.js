@@ -8,45 +8,36 @@ const countWords = () => {
 const wordsList = document.querySelector('.words-list')
 const wordsWrapper = document.querySelector('.words-wrapper')
 
-
-
-const declareBtnClose = () =>{
-
+const declareBtnClose = () => {
     let closeBtn = document.querySelectorAll('.close-btn')
-    closeBtn.forEach((btn, index)=>{
-        btn.addEventListener('click', ()=>{    conflictWords.splice(index, 1)
+    closeBtn.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            conflictWords.splice(index, 1)
             console.log(conflictWords)
-        populateWrapper()
-        }) 
+            populateWrapper()
+        })
     })
 }
 
-const populateWrapper = ()=>{
+const populateWrapper = () => {
     wordsList.innerHTML = ''
-    conflictWords.map((e)=>{
-        wordsList.innerHTML +=`<div class='word'><p>${e}</p><span class='close-btn'>x</span></div>`
-    
-        
+    conflictWords.map((e) => {
+        wordsList.innerHTML += `<div class='word'><p>${e}</p><span class='close-btn'>x</span></div>`
     })
     declareBtnClose()
-    
 }
 
-
 const btnShow = document.querySelector('.btn-display')
-btnShow.addEventListener('click', ()=>{
+btnShow.addEventListener('click', () => {
     wordsWrapper.classList.toggle('visible')
     populateWrapper()
 })
 const btnDrawerClose = document.querySelector('.close-wrapper')
-btnDrawerClose.addEventListener('click', ()=>{
+btnDrawerClose.addEventListener('click', () => {
     wordsWrapper.classList.remove('visible')
 })
 
-function onReceiptsSelected() {
-    let inputFile = document.querySelector('#receiptFilesInput').files
-    const files = inputFile
-    let
+const checkWords = (files) => {
     if (files.length > 0) {
         const reader = new FileReader()
         reader.onload = (e) => {
@@ -58,7 +49,6 @@ function onReceiptsSelected() {
             conflictWords.forEach((word) => {
                 let reg = new RegExp(word, 'gi')
                 original_string = original_string.replace(reg, (e) => {
-
                     return `<span class="highlight">${e}</span>`
                 })
             })
@@ -67,4 +57,13 @@ function onReceiptsSelected() {
         }
         reader.readAsText(files[0])
     }
+}
+
+const checkFile = document.querySelector('#check-file')
+checkFile.addEventListener('click', onReceiptsSelected)
+
+function onReceiptsSelected() {
+    let inputFile = document.querySelector('#receiptFilesInput').files
+    const files = inputFile
+    checkWords(files)
 }

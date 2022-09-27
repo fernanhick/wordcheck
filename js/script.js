@@ -1,4 +1,5 @@
 const conflictWords = ['error', 'project', 'es']
+let resultWords = new Set()
 
 const countWords = () => {
     word += 1
@@ -49,14 +50,24 @@ const checkWords = (files) => {
             conflictWords.forEach((word) => {
                 let reg = new RegExp(word, 'gi')
                 original_string = original_string.replace(reg, (e) => {
-                    return `<span class="highlight">${e}</span>`
+                    resultWords.add(e)
+                    return `<span class="highlight" id='${e}'>${e}</span>`
                 })
             })
             console.log(original_string)
             textArea.innerHTML = `${original_string}`
+            popuLateAside()
         }
         reader.readAsText(files[0])
     }
+}
+
+function popuLateAside() {
+    const resultsArea = document.querySelector('.files-result')
+    resultWords.forEach((value) => {
+        console.log(value)
+        resultsArea.innerHTML += `<div>${value}</div>`
+    })
 }
 
 const checkFile = document.querySelector('#check-file')

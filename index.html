@@ -9,31 +9,35 @@
         <script src="js/script.js" defer></script>
     </head>
     <body>
-        <button class="btn-display">words-list</button>
-        <div class="words-wrapper">
-            <div class="header">
-                Conflicting Programs
-                <div class="close-wrapper"></div>
+        <header class="header">System Files Check</header>
+        <div class="files-controller">
+            <button class="btn-display">words-list</button>
+            <div class="words-wrapper">
+                <div class="header">
+                    Conflicting Programs
+                    <div class="close-wrapper"></div>
+                </div>
+                <form>
+                    <input
+                        class="words-input"
+                        placeholder="Include a word to the list"
+                    />
+                </form>
+
+                <div class="words-list"></div>
             </div>
             <form>
                 <input
-                    class="words-input"
-                    placeholder="Include a word to the list"
+                    type="file"
+                    id="receiptFilesInput"
+                    onchange="onReceiptsSelected()"
                 />
             </form>
-
-            <div class="words-list"></div>
+            <button id="check-file">Check File</button>
         </div>
-        <form>
-            <input
-                type="file"
-                id="receiptFilesInput"
-                onchange="onReceiptsSelected()"
-            />
-        </form>
-        <button id="check-file">Check File</button>
-        <div>
-            <div style="height: 400px; width: 400px" id="file-content"></div>
+        <div class="files-display">
+            <aside class="files-result"></aside>
+            <div id="file-content"></div>
         </div>
     </body>
 </html>

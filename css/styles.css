@@ -2,6 +2,115 @@
     background-color: yellow;
 }
 
+body {
+    background-color: rgb(236, 236, 236);
+}
+
 #file-content {
     white-space: pre-wrap;
+}
+.words-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    padding: 0.5rem;
+    overflow-y: scroll;
+    width: 500px;
+    height: 300px;
+    background-color: rgb(212, 211, 211);
+}
+.words-wrapper {
+    left: 50%;
+    top: 25%;
+    transform: translateX(-50%);
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    border-radius: 15px 15px 0 0;
+    border-style: solid;
+    border-width: 0.2em;
+    border-color: rgb(230, 230, 230);
+    box-shadow: 0px 0px 15px rgb(150, 150, 150);
+}
+.words-wrapper .header {
+    position: relative;
+    font-weight: 600;
+    border-radius: 10px 10px 0 0;
+    padding: 0.5rem 0 0 0;
+    background-color: blue;
+    height: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.words-wrapper .header .close-wrapper {
+    font-size: 1.3rem;
+    right: 10px;
+    top: 3px;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: rgb(209, 209, 209);
+}
+.words-wrapper .header .close-wrapper::after,
+.close-wrapper::before {
+    content: '';
+    height: 1.2em;
+    width: 0.07em;
+    background-color: rgb(255, 255, 255);
+    z-index: 2;
+    position: absolute;
+}
+.words-wrapper .header .close-wrapper::after {
+    transform: rotate(45deg);
+    top: 0;
+    right: 10;
+}
+
+.words-wrapper .header .close-wrapper::before {
+    transform: rotate(-45deg);
+    top: 0;
+    right: 10;
+}
+
+.visible {
+    display: flex;
+}
+.words-input:focus,
+.words-input:hover {
+    outline: none;
+}
+.words-input {
+    padding: 0.2rem 1rem;
+    font-size: 1.3rem;
+    height: 2rem;
+    border: none;
+    background-color: rgb(255, 255, 255);
+}
+.word {
+    font-weight: 400;
+    cursor: alias;
+    color: white;
+    background: blue;
+    padding-left: 0.6rem;
+    padding-right: 0.15rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    height: 1.7rem;
+}
+.close-btn {
+    box-shadow: 1px, 10px, 20px, black;
+    cursor: pointer;
+    background-color: gray;
+    padding: 0.2em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-wrapper {
+    cursor: pointer;
 }

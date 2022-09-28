@@ -1,4 +1,6 @@
-const conflictWords = ['error', 'project', 'es']
+import { words } from './data.js'
+//const conflictWords = ['error', 'project', 'es']
+const conflictWords = words
 let resultWords = new Set()
 
 const countWords = () => {
@@ -64,9 +66,11 @@ const checkWords = (files) => {
 
 function popuLateAside() {
     const resultsArea = document.querySelector('.files-result')
+    resultsArea.innerHTML = ``
+
     resultWords.forEach((value) => {
         console.log(value)
-        resultsArea.innerHTML += `<div>${value}</div>`
+        resultsArea.innerHTML += `<div class='word-aside'><a href=${value}></a>${value}</div>`
     })
 }
 

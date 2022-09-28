@@ -46,6 +46,15 @@ body > .header {
 .files-result {
     background-color: red;
     min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+.word-aside {
+    padding: 0.2rem 0.5rem;
+    outline: auto;
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
 }
 .words-list {
     display: flex;

@@ -1,4 +1,5 @@
 export let words = [
+    'error',
     'CyberGhost',
     'Artmoney',
     'MSI Afterburner',

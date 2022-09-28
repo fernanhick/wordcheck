@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Conflict Programs</title>
         <link rel="stylesheet" href="/css/styles.css" />
-        <script src="js/script.js" defer></script>
+        <script type="module" src="js/script.js" defer></script>
     </head>
     <body>
         <header class="header">System Files Check</header>
@@ -27,11 +27,7 @@
                 <div class="words-list"></div>
             </div>
             <form>
-                <input
-                    type="file"
-                    id="receiptFilesInput"
-                    onchange="onReceiptsSelected()"
-                />
+                <input type="file" id="receiptFilesInput" />
             </form>
             <button id="check-file">Check File</button>
         </div>

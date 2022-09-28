@@ -3,11 +3,6 @@ import { words } from './data.js'
 const conflictWords = words
 let resultWords = new Set()
 
-const countWords = () => {
-    word += 1
-    console.log(`1`)
-}
-
 const wordsList = document.querySelector('.words-list')
 const wordsWrapper = document.querySelector('.words-wrapper')
 
@@ -16,7 +11,6 @@ const declareBtnClose = () => {
     closeBtn.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             conflictWords.splice(index, 1)
-            console.log(conflictWords)
             populateWrapper()
         })
     })
@@ -70,7 +64,7 @@ function popuLateAside() {
 
     resultWords.forEach((value) => {
         console.log(value)
-        resultsArea.innerHTML += `<div class='word-aside'><a href=${value}></a>${value}</div>`
+        resultsArea.innerHTML += `<div class='word-aside'><a href='#${value}'>${value}</a></div>`
     })
 }
 
@@ -82,3 +76,6 @@ function onReceiptsSelected() {
     const files = inputFile
     checkWords(files)
 }
+
+const uploadFile = document.querySelector('#receiptFilesInput')
+uploadFile.addEventListener('change', onReceiptsSelected)

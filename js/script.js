@@ -64,7 +64,7 @@ function popuLateAside() {
 
     resultWords.forEach((value) => {
         console.log(value)
-        resultsArea.innerHTML += `<div class='word-aside'><a href='#${value}'>${value}</a></div>`
+        resultsArea.innerHTML += `<div class='word-aside'>${value}</div>`
     })
 }
 
@@ -79,3 +79,20 @@ function onReceiptsSelected() {
 
 const uploadFile = document.querySelector('#receiptFilesInput')
 uploadFile.addEventListener('change', onReceiptsSelected)
+
+/* Input on press enter */
+
+const inputElement = document.querySelector('.words-input')
+
+const setWord = (e) => {
+    if (e.key == 'Enter') {
+        e.preventDefault()
+
+        let inputVal = inputElement.value
+        conflictWords.push(inputVal)
+        populateWrapper()
+        inputElement.value = ''
+    }
+}
+
+inputElement.addEventListener('keypress', setWord)

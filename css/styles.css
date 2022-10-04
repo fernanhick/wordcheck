@@ -41,6 +41,8 @@ body > .header {
     outline: auto;
 }
 .description {
+    outline: auto;
+
     width: 20%;
     background-color: red;
 }
@@ -55,6 +57,7 @@ body > .header {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
+    outline: auto;
 }
 .word-aside {
     padding: 0.2rem 0.5rem;

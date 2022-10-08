@@ -47,7 +47,7 @@ const checkWords = (files) => {
             conflictWords.forEach((word) => {
                 let reg = new RegExp(word.word, 'gi')
                 original_string = original_string.replace(reg, (e) => {
-                    resultWords.add(e)
+                    resultWords.add(e.toLowerCase())
                     return `<span class="highlight" id='${e}'>${e}</span>`
                 })
             })

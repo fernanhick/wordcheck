@@ -7,6 +7,7 @@ let resultWords = new Set()
 const wordsList = document.querySelector('.words-list')
 const wordsWrapper = document.querySelector('.words-wrapper')
 
+/* ******************** Close Button For words list ********************* */
 const declareBtnClose = () => {
     let closeBtn = document.querySelectorAll('.close-btn')
     closeBtn.forEach((btn, index) => {
@@ -16,7 +17,7 @@ const declareBtnClose = () => {
         })
     })
 }
-
+/* *************************** Words Population in List****************************** */
 const populateWrapper = () => {
     wordsList.innerHTML = ''
     conflictWords.map((e) => {
@@ -24,17 +25,18 @@ const populateWrapper = () => {
     })
     declareBtnClose()
 }
-
+/* ****************************** Words List Button Display********************************** */
 const btnShow = document.querySelector('.btn-display')
 btnShow.addEventListener('click', () => {
     wordsWrapper.classList.toggle('visible')
     populateWrapper()
 })
+/* *******************************Close Button List Drawer ******************************* */
 const btnDrawerClose = document.querySelector('.close-wrapper')
 btnDrawerClose.addEventListener('click', () => {
     wordsWrapper.classList.remove('visible')
 })
-
+/* *********************Open Files And Check Words************************ */
 const checkWords = (files) => {
     if (files.length > 0) {
         const reader = new FileReader()
@@ -43,7 +45,6 @@ const checkWords = (files) => {
             let textArea = document.querySelector('#file-content')
 
             var original_string = content
-
             conflictWords.forEach((word) => {
                 let reg = new RegExp(word.word, 'gi')
                 original_string = original_string.replace(reg, (e) => {
@@ -58,7 +59,7 @@ const checkWords = (files) => {
         reader.readAsText(files[0])
     }
 }
-
+/* ***********************Populate Aside for Words when detected in file ************************* */
 function popuLateAside() {
     const resultsArea = document.querySelector('.files-result')
     resultsArea.innerHTML = ``
@@ -71,6 +72,7 @@ function popuLateAside() {
         e.addEventListener('click', () => populateDescription(e.innerText))
     })
 }
+/* *************************Description For Words onClick **************************** */
 function populateDescription(arg) {
     const setDescription = document.querySelector('.description-text')
     setDescription.innerHTML = ''
@@ -82,7 +84,7 @@ function populateDescription(arg) {
         }
     })
 }
-
+/* ********************** Check File Button*************************** */
 const checkFile = document.querySelector('#check-file')
 checkFile.addEventListener('click', onReceiptsSelected)
 

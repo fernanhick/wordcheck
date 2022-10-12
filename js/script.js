@@ -1,7 +1,6 @@
-import { words } from './data.js'
-import { wordlist } from './data.js'
-//const conflictWords = ['error', 'project', 'es']
-const conflictWords = wordlist
+import { wordslist } from './data.js'
+
+const conflictWords = wordslist
 let resultWords = new Set()
 
 const wordsList = document.querySelector('.words-list')
@@ -48,11 +47,11 @@ const checkWords = (files) => {
             conflictWords.forEach((word) => {
                 let reg = new RegExp(word.word, 'gi')
                 original_string = original_string.replace(reg, (e) => {
-                    resultWords.add(e.toLowerCase())
-                    return `<span class="highlight" id='${e}'>${e}</span>`
+                    let word = e.toLowerCase()
+                    resultWords.add(word)
+                    return `<span class="highlight" id='${word}'>${e}</span>`
                 })
             })
-            console.log(original_string)
             textArea.innerHTML = `${original_string}`
             popuLateAside()
         }
@@ -79,8 +78,9 @@ function populateDescription(arg) {
     conflictWords.forEach((e) => {
         let word = e.word.toLowerCase()
         let description = e.description
+        let solution = e.solution
         if (word == arg.toLowerCase()) {
-            setDescription.innerHTML = `${e.word}: ${description}`
+            setDescription.innerHTML = `<p>Word: ${e.word}</p><p>Description: ${description}</p><p> Solution: ${solution}</p>`
         }
     })
 }
@@ -99,17 +99,28 @@ uploadFile.addEventListener('change', onReceiptsSelected)
 
 /****************************************  Input on press enter *****************************************/
 
-const inputElement = document.querySelector('.words-input')
+const inputWord = document.querySelector('.words-input')
+const inputDescription = document.querySelector('.description-input')
+const inputSolution = document.querySelector('.solution-input')
 
 const setWord = (e) => {
     if (e.key == 'Enter') {
         e.preventDefault()
-
-        let inputVal = inputElement.value
+        let inputVal = {
+            word: inputWord.value,
+            description: inputDescription.value,
+            solution: inputSolution.value,
+        }
         conflictWords.push(inputVal)
         populateWrapper()
-        inputElement.value = ''
+        inputWord.value = ''
+        inputDescription.value = ''
+        inputSolution.value = ''
     }
 }
 
-inputElement.addEventListener('keypress', setWord)
+inputWord.addEventListener('keypress', setWord)
+inputDescription.addEventListener('keypress', setWord)
+inputSolution.addEventListener('keypress', setWord)
+
+/* ****************************************************************************************** */

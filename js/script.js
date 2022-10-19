@@ -58,17 +58,58 @@ const checkWords = (files) => {
         reader.readAsText(files[0])
     }
 }
+
+/* ************************** Search Functionality  ******************************* */
+
+function setSearchCrarousel(arg) {
+    let slideIndex = 1
+    showSlides(slideIndex)
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides((slideIndex += n))
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides((slideIndex = n))
+    }
+
+    function showSlides(n) {
+        let i
+        let slides = document.querySelectorAll(`#${arg}`)
+        console.log(slides)
+        // let slides = document.getElementsByClassName('mySlides')
+        // let dots = document.getElementsByClassName('dot')
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none'
+        }
+
+        slides[slideIndex - 1].style.display = 'block'
+        slides[slideIndex - 1].scrollIntoView()
+    }
+}
+
 /* ***********************Populate Aside for Words when detected in file ************************* */
 function popuLateAside() {
     const resultsArea = document.querySelector('.files-result')
     resultsArea.innerHTML = ``
 
     resultWords.forEach((value) => {
-        resultsArea.innerHTML += `<a href='#${value}'><div class='word-aside'>${value}</div></a>`
+        resultsArea.innerHTML += `<div class='word-aside'>${value}</div>`
+        //resultsArea.innerHTML += `<a href='#${value}'><div class='word-aside'>${value}</div></a>`
     })
+
     const descWords = document.querySelectorAll('.word-aside')
     descWords.forEach((e) => {
         e.addEventListener('click', () => populateDescription(e.innerText))
+        e.addEventListener('click', () => setSearchCrarousel(e.innerText))
     })
 }
 /* *************************Description For Words onClick **************************** */

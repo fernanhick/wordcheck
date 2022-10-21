@@ -60,40 +60,23 @@ const checkWords = (files) => {
 }
 
 /* ************************** Search Functionality  ******************************* */
+//TODO
+let indexMap = {}
 
-function setSearchCrarousel(arg) {
-    let slideIndex = 1
-    showSlides(slideIndex)
+/* let indexname = 'error'
+indexMap[indexname] = 1
+console.log(indexMap) */
 
-    // Next/previous controls
-    function plusSlides(n) {
-        showSlides((slideIndex += n))
-    }
+function nextWord(arg) {}
 
-    // Thumbnail image controls
-    function currentSlide(n) {
-        showSlides((slideIndex = n))
-    }
-
-    function showSlides(n) {
-        let i
-        let slides = document.querySelectorAll(`#${arg}`)
-        console.log(slides)
-        // let slides = document.getElementsByClassName('mySlides')
-        // let dots = document.getElementsByClassName('dot')
-        if (n > slides.length) {
-            slideIndex = 1
-        }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = 'none'
-        }
-
-        slides[slideIndex - 1].style.display = 'block'
-        slides[slideIndex - 1].scrollIntoView()
-    }
+function setSearchCrarousel() {
+    const descWords = document.querySelectorAll('.word-aside')
+    descWords.forEach((e) => {
+        indexMap[e.innerText] = 1
+        e.addEventListener('click', () => populateDescription(e.innerText))
+        e.addEventListener('click', () => nextWord(e.innerText))
+    })
+    console.log(indexMap)
 }
 
 /* ***********************Populate Aside for Words when detected in file ************************* */
@@ -106,11 +89,7 @@ function popuLateAside() {
         //resultsArea.innerHTML += `<a href='#${value}'><div class='word-aside'>${value}</div></a>`
     })
 
-    const descWords = document.querySelectorAll('.word-aside')
-    descWords.forEach((e) => {
-        e.addEventListener('click', () => populateDescription(e.innerText))
-        e.addEventListener('click', () => setSearchCrarousel(e.innerText))
-    })
+    setSearchCrarousel()
 }
 /* *************************Description For Words onClick **************************** */
 function populateDescription(arg) {

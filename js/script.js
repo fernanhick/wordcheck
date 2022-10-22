@@ -63,20 +63,36 @@ const checkWords = (files) => {
 //TODO
 let indexMap = {}
 
-/* let indexname = 'error'
-indexMap[indexname] = 1
-console.log(indexMap) */
+function nextWord(arg) {
+    const words = document.querySelectorAll(`#${arg}`)
+    const waside = document.querySelector(`#${arg}-aside`)
 
-function nextWord(arg) {}
+    words[indexMap[arg]].scrollIntoView()
+
+    const newDiv = document.createElement('span')
+    newDiv.innerHTML = ``
+    // and give it some content
+    const newContent = document.createTextNode(`${indexMap[arg] + 1}`)
+
+    // add the text node to the newly created div
+    newDiv.appendChild(newContent)
+
+    waside.insertAdjacentElement('afterend', newDiv)
+
+    indexMap[arg] += 1
+    if (indexMap[arg] >= words.length) {
+        indexMap[arg] = 0
+    }
+    console.log(indexMap[arg])
+}
 
 function setSearchCrarousel() {
     const descWords = document.querySelectorAll('.word-aside')
     descWords.forEach((e) => {
-        indexMap[e.innerText] = 1
+        indexMap[e.innerText] = 0
         e.addEventListener('click', () => populateDescription(e.innerText))
         e.addEventListener('click', () => nextWord(e.innerText))
     })
-    console.log(indexMap)
 }
 
 /* ***********************Populate Aside for Words when detected in file ************************* */
@@ -85,7 +101,7 @@ function popuLateAside() {
     resultsArea.innerHTML = ``
 
     resultWords.forEach((value) => {
-        resultsArea.innerHTML += `<div class='word-aside'>${value}</div>`
+        resultsArea.innerHTML += `<div class='word-aside' id='${value}-aside'>${value}</div>`
         //resultsArea.innerHTML += `<a href='#${value}'><div class='word-aside'>${value}</div></a>`
     })
 

@@ -67,7 +67,12 @@ function nextWord(arg) {
     const words = document.querySelectorAll(`#${arg}`)
     const waside = document.querySelector(`#${arg}-aside`)
 
-    words[indexMap[arg]].scrollIntoView()
+    words[indexMap[arg]].scrollIntoView({ behavior: 'smooth' })
+    words[indexMap[arg]].classList.toggle('searched')
+
+    if (words[indexMap[arg] - 1] !== undefined) {
+        words[indexMap[arg] - 1].classList.toggle('searched')
+    }
 
     waside.innerHTML = `${indexMap[arg] + 1} / ${words.length}`
 

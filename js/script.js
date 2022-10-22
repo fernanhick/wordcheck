@@ -69,15 +69,7 @@ function nextWord(arg) {
 
     words[indexMap[arg]].scrollIntoView()
 
-    const newDiv = document.createElement('span')
-    newDiv.innerHTML = ``
-    // and give it some content
-    const newContent = document.createTextNode(`${indexMap[arg] + 1}`)
-
-    // add the text node to the newly created div
-    newDiv.appendChild(newContent)
-
-    waside.insertAdjacentElement('afterend', newDiv)
+    waside.innerHTML = `${indexMap[arg] + 1} / ${words.length}`
 
     indexMap[arg] += 1
     if (indexMap[arg] >= words.length) {
@@ -101,7 +93,7 @@ function popuLateAside() {
     resultsArea.innerHTML = ``
 
     resultWords.forEach((value) => {
-        resultsArea.innerHTML += `<div class='word-aside' id='${value}-aside'>${value}</div>`
+        resultsArea.innerHTML += `<div class='word-aside-wrapper' ><div class='word-aside'>${value}</div><span id='${value}-aside'></span></div>`
         //resultsArea.innerHTML += `<a href='#${value}'><div class='word-aside'>${value}</div></a>`
     })
 

@@ -35,7 +35,7 @@ const btnDrawerClose = document.querySelector('.close-wrapper')
 btnDrawerClose.addEventListener('click', () => {
     wordsWrapper.classList.remove('visible')
 })
-/* *********************Open Files And Check Words************************ */
+/* *****************color****Open Files And Check Words************************ */
 const checkWords = (files) => {
     if (files.length > 0) {
         const reader = new FileReader()
@@ -74,7 +74,7 @@ function nextWord(arg) {
         words[indexMap[arg] - 1].classList.toggle('searched')
     }
 
-    waside.innerHTML = `${indexMap[arg] + 1} / ${words.length}`
+    waside.innerHTML = `${indexMap[arg] + 1}/`
 
     indexMap[arg] += 1
     if (indexMap[arg] >= words.length) {
@@ -82,14 +82,47 @@ function nextWord(arg) {
     }
     console.log(indexMap[arg])
 }
+function prevWord(arg) {
+    const words = document.querySelectorAll(`#${arg}`)
+    const waside = document.querySelector(`#${arg}-aside`)
+    words.forEach((e) => {
+        e.classList.toggle('searched')
+    })
+    words[indexMap[arg]].scrollIntoView({ behavior: 'smooth' })
+    words[indexMap[arg]].classList.toggle('searched')
+
+    if (words[indexMap[arg] + 1] !== undefined) {
+        words[indexMap[arg] + 1].classList.toggle('searched')
+    }
+
+    indexMap[arg] -= 1
+    waside.innerHTML = `${indexMap[arg] + 1}/`
+    if (indexMap[arg] <= 0) {
+        indexMap[arg] = words.length - 1
+    }
+    console.log(indexMap[arg])
+}
 
 function setSearchCrarousel() {
-    const descWords = document.querySelectorAll('.word-aside')
+    const descWords = document.querySelectorAll('.word-aside-wrapper')
     descWords.forEach((e) => {
-        indexMap[e.innerText] = 0
-        e.addEventListener('click', () => populateDescription(e.innerText))
-        e.addEventListener('click', () => nextWord(e.innerText))
+        let word = e.dataset.name
+        indexMap[word] = 0
+        e.addEventListener('click', () => populateDescription(word))
+        console.log(e.childNodes[1].childNodes[0])
+        e.childNodes[1].childNodes[0].addEventListener('click', () =>
+            nextWord(word)
+        )
+        e.childNodes[1].childNodes[1].addEventListener('click', () =>
+            prevWord(word)
+        )
     })
+    /*   const descWordsDown = document.querySelectorAll('.arrow-down')
+    descWordsDown.forEach((e) => {
+        console.log(e.dataset.name)
+        let value = '' + e.dataset.name
+        e.addEventListener('click', () => nextWord(value))
+    }) */
 }
 
 /* ***********************Populate Aside for Words when detected in file ************************* */
@@ -98,8 +131,9 @@ function popuLateAside() {
     resultsArea.innerHTML = ``
 
     resultWords.forEach((value) => {
-        resultsArea.innerHTML += `<div class='word-aside-wrapper' ><div class='word-aside'>${value}</div><span id='${value}-aside'></span></div>`
-        //resultsArea.innerHTML += `<a href='#${value}'><div class='word-aside'>${value}</div></a>`
+        const words = document.querySelectorAll(`#${value}`)
+
+        resultsArea.innerHTML += `<div class='word-aside-wrapper' data-name='${value}' ><div class='word-aside'>${value}</div><div class='search-controller'><span class='arrow-down' >down</span><span class='arrow-up'>up</span></div><div id='counter-wrapper'><span id='${value}-aside'></span><span id='${value}-total'>${words.length}</span></div></div>`
     })
 
     setSearchCrarousel()

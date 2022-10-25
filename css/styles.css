@@ -109,7 +109,12 @@ body > .header {
     border-radius: 100vw 0 0 100vw;
 }
 .arrow-up {
+    position: relative;
     border-radius: 0 100vw 100vw 0;
+}
+
+.arrow-up::before {
+    content: '';
 }
 .arrow-down,
 .arrow-up {

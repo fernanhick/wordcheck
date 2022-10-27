@@ -133,7 +133,7 @@ function popuLateAside() {
     resultWords.forEach((value) => {
         const words = document.querySelectorAll(`#${value}`)
 
-        resultsArea.innerHTML += `<div class='word-aside-wrapper' data-name='${value}' ><div class='word-aside'>${value}</div><div class='search-controller'><span class='arrow-down' >down</span><span class='arrow-up'>up</span></div><div id='counter-wrapper'><span id='${value}-aside'></span><span id='${value}-total'>${words.length}</span></div></div>`
+        resultsArea.innerHTML += `<div class='word-aside-wrapper' data-name='${value}' ><div class='word-aside'>${value}</div><div class='search-controller'><div class='arrow-down' ></div><div class='arrow-up'></div></div><div id='counter-wrapper'><span id='${value}-aside'></span><span id='${value}-total'>${words.length}</span></div></div>`
     })
 
     setSearchCrarousel()

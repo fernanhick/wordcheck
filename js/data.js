@@ -6,48 +6,59 @@ export let wordslist = [
     },
     {
         word: 'CyberGhost',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'CyberGhost is the best VPN service in 2022. With more than 7800 servers, it offers top privacy for all devices, Windows, iOS, Mac, Android, or Linux.',
+        solution: 'Disable',
     },
     {
         word: 'Artmoney',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'ArtMoney is a fabulously clever piece of software. It is basically a memory/file editor which you can use to cheat on your favourite games.',
+        solution: 'Disable',
     },
     {
         word: 'MSI Afterburner',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'MSI Afterburner is the ultimate graphics card utility, developed by the Guru3D RivaTuner team',
+        solution: 'Disable',
     },
     {
         word: 'Kaspersky',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'My Kaspersky is a one-stop point for protection of your digital life and those you care ... Use a convenient online interface to manage your Kaspersky products.',
+        solution:
+            'Disable or apply rules for allowing GTAV,RDOnline and Rockstar Games launcher access to internet',
     },
     {
         word: 'One System Care Public',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'One System Care is presented as an application that helps to clean computer systems of various junk files',
+        solution: 'Disable',
     },
     {
         word: 'Dropbox',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'Dropbox is a file hosting service operated by the American company Dropbox, Inc., headquartered in San Francisco, California, U.S. that offers cloud storage, file synchronization, personal cloud, and client software',
+        solution:
+            'Login to Dropbox so the game detects the files synced from my documents, other option is to disable and reassign my documents to main drive and not located within drobox files',
     },
     {
         word: 'ALTVPN.com',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'AltVPVN is a capable anonymity platform with plenty to like: blazing speeds, access to geo-blocked content, low prices and a free trial',
+        solution: 'Disable',
     },
     {
         word: 'Cheat Engine',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'Cheat Engine is a proprietary, source available freeware memory scanner/debugger created by Eric Heijnen for the Windows operating system. Cheat Engine is mostly used for cheating in computer games and is sometimes modified and recompiled to support new games',
+        solution: 'Uninstall and fresh install of the games',
     },
     {
         word: 'RivaTuner Statistics',
-        description: 'brief description and actions',
-        solution: 'Solution for case',
+        description:
+            'RivaTuner is a freeware overclocking and hardware monitoring program that was first developed by Alexey Nicolaychuk in 1997 for the Nvidia video cards. It was a pioneering application that influenced the design of subsequent freeware graphics card overclocking and monitoring utilities.',
+        solution: 'Disable overclocking',
     },
     {
         word: 'Avast',
